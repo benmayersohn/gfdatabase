@@ -17,10 +17,8 @@ You'll need to do a few things to get up and running:
 
 Using the theme is simple: the home page chooses a random question from our database and displays it. Your job is to answer the question. We’ve included an example problem below:
 
-<div style="text-align:center;">
-<img src="assets/images/example-1.png" alt="" style="max-width: 360px;margin:0 auto;"/>
-</div>
-<br>
+![](assets/images/example-1.png){:min-width="360px"}
+
 Tough right?? It only gets harder from here! There are three buttons below the question:
 
 1. `Hint`: Get a hint for this problem. This will appear as a modal window that overlays the question.
@@ -28,11 +26,8 @@ Tough right?? It only gets harder from here! There are three buttons below the q
 1. `Next`: Move on to the next random problem. The question will be replaced with a new one.
 
 Clicking the Answer button will also yield a link to the permanent link to this problem, in case you’d like to share it with someone else or revisit it later:
-<br>
-<div style="text-align:center;">
-<img src="assets/images/example-2.png" alt="" style="max-width: 200px;margin:0 auto;"/>
-</div>
-<br>
+
+![](assets/images/example-2.png){:min-width="200px"}
 
 The question will appear the same way as it did on the home page (without the Next button, of course).
 
