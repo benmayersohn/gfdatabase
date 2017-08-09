@@ -15,21 +15,15 @@ You'll need to do a few things to get up and running:
 
 ## How to use it
 
-Using the theme is simple: the home page chooses a random question from our database and displays it. Your job is to answer the question. We’ve included an example problem below:
+Using the theme is simple: the home page chooses a random question from our database and displays it. Your job is to answer the question. We’ve included an example problem [here](assets/images/example-1.png).
 
-![](assets/images/example-1.png){:min-width="360px"}
-
-Tough right?? It only gets harder from here! There are three buttons below the question:
+There are three buttons below the question:
 
 1. `Hint`: Get a hint for this problem. This will appear as a modal window that overlays the question.
 1. `Answer`: View the full solution to this problem. The answer will appear below the question.
 1. `Next`: Move on to the next random problem. The question will be replaced with a new one.
 
-Clicking the Answer button will also yield a link to the permanent link to this problem, in case you’d like to share it with someone else or revisit it later:
-
-![](assets/images/example-2.png){:min-width="200px"}
-
-The question will appear the same way as it did on the home page (without the Next button, of course).
+Clicking the Answer button will also [reveal the permanent link](assets/images/example-2.png) of this problem, in case you’d like to share it with someone else or revisit it later. The question will appear the same way as it did on the home page (without the Next button, of course).
 
 A few more things:
 
