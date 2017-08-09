@@ -15,7 +15,7 @@ You'll need to do a few things to get up and running:
 
 ## How to use it
 
-Using the theme is simple: the home page chooses a random question from our database and displays it. Your job is to answer the question. We’ve included an example problem [here](assets/images/example-1.png).
+Using the theme is simple: the Question Feeder page chooses a random question from the database and displays it. Your job is to answer the question. We’ve included an example problem [here](assets/images/example-1.png).
 
 There are three buttons below the question:
 
@@ -23,7 +23,7 @@ There are three buttons below the question:
 1. `Answer`: View the full solution to this problem. The answer will appear below the question.
 1. `Next`: Move on to the next random problem. The question will be replaced with a new one.
 
-Clicking the Answer button will also [reveal the permanent link](assets/images/example-2.png) of this problem, in case you’d like to share it with someone else or revisit it later. The question will appear the same way as it did on the home page (without the Next button, of course).
+Clicking on `Answer` will also reveal [a button](assets/images/example-2.png) that leads to the permanent link of this problem, in case you’d like to share it with someone else or revisit it later. The question will appear the same way as it did on the home page (without the Next button, of course).
 
 A few more things:
 
