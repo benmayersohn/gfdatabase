@@ -12,6 +12,37 @@ add_filter('excerpt_more', 'new_excerpt_more');
 
 /* Theme setup */
 
+// Get permalink for question feeder
+// either home or separate question feeder page
+function question_feeder_permalink(){
+	$args = array(
+		'post_type'  => 'page', 
+		'post_status' => 'publish',
+		'meta_query' => array( 
+			array(
+				'key'   => '_wp_page_template', 
+				'value' => 'question-feeder.php',
+			)
+		)
+	);
+	$query = new WP_Query( $args );
+
+	/* This should only happen ONCE. Only one question feeder per website. */
+	if ( $query->have_posts() ) {
+		while ( $query->have_posts() ) {
+			$query->the_post();
+			$link = get_the_permalink();
+		}
+		wp_reset_query();
+	}
+	/* ...unless we don't create one. In this case, just get home url (default) */
+	else{
+		$link = get_home_url();
+	}
+
+	return $link;
+}
+
 /* Images */
 $args = array(
 	'flex-width'    => true,

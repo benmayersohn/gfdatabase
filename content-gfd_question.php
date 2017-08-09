@@ -36,9 +36,15 @@
         <a class="btn btn-danger return-button" id="answer-button" href="#answer-button">Answer</a>
     <?php endif; ?>
 
-    <!-- If we're on the home page, get the home url -->
+    <!-- If we're not on the home page but SHOW_QUESTION is set, we're in a separate feeder -->
     <?php if (is_front_page()) : ?>
     <a class="btn btn-primary return-button" href="<?php get_home_url();?>">Next</a>
+    <?php elseif (isset($_GET[SHOW_QUESTION])) :
+        if (isset($_GET[TOPIC])) : ?>
+        <a class="btn btn-primary return-button" href="<?php echo FEEDER_LINK . '?' . TOPIC . '=' . $_GET[TOPIC] . '?' . SHOW_QUESTION . '=' . $_GET[SHOW_QUESTION] ;?>">Next</a>
+        <?php else : ?>
+        <a class="btn btn-primary return-button" href="<?php echo FEEDER_LINK . '?' . SHOW_QUESTION . '=' . $_GET[SHOW_QUESTION] ?>">Next</a>
+        <?php endif; ?>
     <?php endif; ?>
 
     <?php
@@ -48,7 +54,7 @@
             <div style="text-align:left;">
             <?php echo $answer; ?>
             </div>
-            <?php if (is_front_page()) : ?>
+            <?php if (isset($_GET[SHOW_QUESTION])) : ?>
             <a class="btn btn-default permanent-link return-button" href="<?php the_permalink();?>">Permanent Link</a>
             <?php endif; ?>
             <div class="question-comments text-left">

@@ -35,7 +35,7 @@ endif;
 function my_customize_register() {     
 	global $wp_customize;
 	$wp_customize->remove_section( 'colors' ); // get rid of default color customizing
-	$wp_customize->remove_section( 'static_front_page' ); // we only have one option for this theme
+	//$wp_customize->remove_section( 'static_front_page' ); // we only have one option for this theme
 
 	$wp_customize->add_panel( 'essentials', array(
     'priority'       => 5,
