@@ -8,14 +8,26 @@ It's a theme for [WordPress](https://wordpress.org/) that is designed for storin
 
 You'll need to do a few things to get up and running:
 
-* To use the question/answer feature **YOU MUST CREATE ONE BLANK PAGE** that uses the *Question Feeder* template. You can then customize the introductory spiel under the *Intro* sections of the *Essentials* panel.
-* You can make the question/answer page your home page (this is what I always do). Or you can have a different static home page and keep your question feeder at another permalink.
+* To use the question/answer feature you must create a blank page that uses the *Question Feeder* template. You can then customize the introductory spiel under the *Intro* sections of the *Essentials* panel.
+
+**DO NOT CREATE MORE THAN ONE *Question Feeder* PAGE.**
+
+* You can make the question feeder your home page (this is what I always do). Or you can have a different static home page and keep your question feeder at another permalink.
+* You can assign one or more topics to each question. To display all the topics in one place, make a blank page that uses the *Topics* template. The page will be automatically generated from the topics you have entered.
 * If you want to show all your blog posts in one place, create a blank page using the *Post List* template. All your posts will be presented here in reverse chronological order.
 * Create a navigation menu from the WordPress customizer under the *Menus* panel. Then you can customize it under the *Navigation Bar* section of the *Essentials* panel.
 
-## How to use it
+## Creating questions
 
-Using the theme is simple: the Question Feeder page chooses a random question from the database and displays it. Your job is to answer the question. We’ve included an example problem [here](assets/images/example-1.png).
+You can create questions straight from the dashboard - it's near the top of the menu! Each question has a main field, which corresponds to the prompt; a hint, which provides some help in solving the problem; and an answer, which is...the answer.
+
+Each question also has a topics section, where you can add one or more topics to which the question corresponds. These topics will show up under the page that uses the *Topics* template.
+
+There is nothing much more to it than that! Questions, hints, and answers are all entered via a WYSIWYG editor. The theme has MathJax built in, so you can enter pretty typed equations as well!
+
+## How it works
+
+Using the theme is simple: the Question Feeder page chooses a random question from the database and displays it. By default, it chooses from all the questions, but you can also query the database by topic. Anyway, your job is to answer the question. We’ve included an example problem [here](assets/images/example-1.png).
 
 There are three buttons below the question:
 
