@@ -53,13 +53,13 @@ function my_customize_register() {
 
 	$wp_customize->add_section( 'essentials_body', array(
     'title'          => __('Body'),
-    'priority'      => 35,
+    'priority'      => 65,
 	'panel' 		=> 'essentials',
 	) );
 
     $wp_customize->add_section( 'essentials_intro', array(
     'title'          => __('Intro'),
-    'priority'      => 65,
+    'priority'      => 75,
 	'panel' 		=> 'essentials',
 	) );
 
@@ -71,9 +71,15 @@ function my_customize_register() {
 
 	$wp_customize->add_section( 'essentials_footer', array(
     'title'          => __('Footer'),
-    'priority'      => 75,
+    'priority'      => 85,
 	'panel' 		=> 'essentials',
 	) );
+
+	$wp_customize->add_section( 'essentials_header', array(
+		'title'          => __('Header'),
+		'priority'      => 35,
+		'panel' 		=> 'essentials',
+		) );
 
 	$wp_customize->add_setting( 'essentials_body_bg', array(
 	'default' => BODY_BACKGROUND,
@@ -298,6 +304,40 @@ function my_customize_register() {
 		'section'    => 'essentials_footer',
 		'settings'   => 'essentials_footer_bg',
 	)));
+
+	$wp_customize->add_setting( 'essentials_body_header_bg_img', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'transport' => '',
+		) );
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'header_bg_img',
+			array(
+				'label'      => __( 'Header Background Image (will override color)'),
+				'section'    => 'essentials_header',
+				'settings'   => 'essentials_body_header_bg_img',
+			)
+		)
+	);
+
+	$wp_customize->add_setting( 'essentials_body_header_bg_color', array(
+		'default' => BODY_BACKGROUND,
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'transport' => '',
+		) );
+	
+		$wp_customize->add_control(new WP_Customize_Color_Control( 
+		$wp_customize, 
+		'header_bg_color', 
+		array(
+			'label'      => __( 'Header Background Color'),
+			'section'    => 'essentials_header',
+			'settings'   => 'essentials_body_header_bg_color',
+		)));
 
 } 
 

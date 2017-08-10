@@ -18,9 +18,24 @@ Tags: bootstrap, questions, problems
     margin-bottom:30px;
 }
 
+thead>tr>th{
+    text-align:center;
+}
+
 .permanent-link{
     margin-top:30px;
 }
+
+.topic-table{
+    margin-top:30px;
+}
+
+img.alignright { float: right; margin: 0 0 1em 1em; }
+img.alignleft { float: left; margin: 0 1em 1em 0; }
+img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+.alignright { float: right; }
+.alignleft { float: left; }
+.aligncenter { display: block; margin-left: auto; margin-right: auto; }
 
 .btn{
     margin-top:10px;
@@ -28,6 +43,11 @@ Tags: bootstrap, questions, problems
 
 .question-content{
     margin-bottom: 10px;
+}
+
+.pre-nav{
+    padding-top:1px;
+    padding-bottom:1px;
 }
 
 .question-style{
@@ -39,13 +59,14 @@ Tags: bootstrap, questions, problems
     margin-top:50px;
 }
 
-.navbar-header{
-    margin-bottom:20px;
-}
-
 .navbar-inner{
     text-align:center;
     align-content:center;
+    padding-top:20px;
+}
+
+.navbar-header{
+    margin-bottom:20px;
 }
 
 .nav{
@@ -69,6 +90,8 @@ Tags: bootstrap, questions, problems
     text-align:center;
     font-family:'Raleway',sans-serif;
     border-radius:20px;
+    margin-left:10px;
+    margin-right:10px;
     padding-top:5px;
     padding-bottom:5px;
     margin-bottom:20px;
@@ -191,7 +214,7 @@ h3{
         font-size:16px;
     }
 
-    h2{
+    h2.text-center{
         font-size:25px;
     }
 
@@ -240,7 +263,7 @@ h3{
         font-size:14px;
     }
 
-    h2{
+    h2.text-center{
         font-size:23px;
     }
 
@@ -279,7 +302,7 @@ h3{
         font-size:14px;
     }
 
-    h2{
+    h2.text-center{
         font-size:23px;
     }
 
@@ -318,7 +341,7 @@ h3{
         font-size:16px;
     }
 
-    h2{
+    h2.text-center{
         font-size:22px;
     }
 
@@ -351,7 +374,7 @@ h3{
         font-size:16px;
     }
 
-    h2{
+    h2.text-center{
         font-size:22px;
     }
 
@@ -392,7 +415,7 @@ h3{
         font-size:16px;
     }
 
-    h2{
+    h2.text-center{
         font-size:24px;
     }
 

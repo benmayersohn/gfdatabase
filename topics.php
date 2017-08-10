@@ -20,11 +20,20 @@ $terms = get_terms(array(
 // Create a table, thumbnail
 ?>  
     <h2 class="text-center">Topics</h2>
-  <table class="table table-bordered table-hover topic-table" style="margin-top:30px;">
+  <table class="table table-bordered table-hover topic-table">
+    <thead>
+    <tr>
+     <th>Topic</th>
+     <th>Count</th>
+     <th>Description</th>
+    </tr>
+    </thead>
     <tbody>
     <?php foreach ($terms as $term){
     $link = FEEDER_LINK . "?" . SHOW_QUESTION . "=0&" . TOPIC . "=" . $term->slug;
-    $row_string = "<tr><td><a href=\"" . $link . "\">" . $term->name . "</a></td><td style=\"text-align:left;\">" . $term->description . "</td></tr>";
+    $row_string = "<tr><td id=\"" . $term->slug . "\"><a href=\"" . $link . "\">" . $term->name . "</a></td>" 
+    . "<td>" . $term->count . "</td>"
+    . "<td style=\"text-align:left;\">" . $term->description . "</td></tr>";
     echo $row_string;
     }?>
     </tbody>

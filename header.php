@@ -47,9 +47,19 @@
 	#dropdown-button{
     border-color: " . get_theme_mod('essentials_navbar_mobile_color',NAVBAR_MOBILE_DEFAULT) . ";
 	background-color: " . get_theme_mod('essentials_body_bg',BODY_BACKGROUND) . ";
+	}"
+	;
+
+	if (get_theme_mod('essentials_body_header_bg_img') != ''){
+		echo ".pre-nav{
+		background-color: transparent;
+		background-image: url('" . get_theme_mod('essentials_body_header_bg_img') . "');}";
 	}
-	</style>
-	";
+	elseif (get_theme_mod('essentials_body_header_bg_color') != ''){
+		echo ".pre-nav{
+			background-color: " . get_theme_mod('essentials_body_header_bg_color',BODY_BACKGROUND) . ";}";
+	}
+	echo "</style>";
 	?>
 
 	<!-- Favicon
@@ -63,17 +73,20 @@
     
     <?php wp_head();?>
 </head>
-<body style="background-color:<?php echo get_theme_mod('essentials_body_bg',BODY_BACKGROUND);?>;color:<?php echo get_theme_mod('essentials_body_text_color',BODY_TEXT_COLOR);?>;">
+<body style=
+"<?php echo "background-color: " . get_theme_mod('essentials_body_bg',BODY_BACKGROUND);?>;
+color:<?php echo get_theme_mod('essentials_body_text_color',BODY_TEXT_COLOR);?>;">
 
 	<!-- Primary Page Layout
 	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
-	<div class="container">
 		<section class="header">
+			<div class="pre-nav">
 			<a href="<?php echo get_site_url(); ?>">
 			<img id="title-img" class="img-responsive" alt="" src="<?php header_image(); ?>">
 			</a>
 			<h1 class="main-subtitle" style="background-color:<?php echo get_theme_mod('essentials_subtitle_bg',SUBTITLE_BG_DEFAULT); ?>"><?php echo get_theme_mod('essentials_subtitle_text',SUBTITLE_TEXT_DEFAULT); ?></h1>
+			</div>
 			<div class="navbar-before"></div>
 			
 			<div id="dropdown-button" class="navbar-header">
@@ -97,4 +110,5 @@
 			?>
 		</section>
 		<hr class="non-mobile-separator">
+		<div class="container">
 	
