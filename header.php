@@ -62,10 +62,6 @@
 	echo "</style>";
 	?>
 
-	<!-- Favicon
-	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-	<link rel="icon" type="image/png" href="<?php echo TEMPLATE_DIR; ?>/assets/images/favicon.png">
-
 	<!-- Scripts
 	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
