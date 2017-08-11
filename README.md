@@ -8,11 +8,11 @@ It's a theme for [WordPress](https://wordpress.org/) that is designed for storin
 
 You'll need to do a few things to get up and running:
 
-* To use the question/answer feature you must create a blank page that uses the *Question Feeder* template. You can then customize the introductory spiel under the *Intro* sections of the *Essentials* panel.
+* To use the question/answer feature you must create a page that uses the *Question Feeder* template. Use this page to write up an introduction to the feeder.
 
 **DO NOT CREATE MORE THAN ONE *Question Feeder* PAGE.**
 
-* You can make the question feeder your home page (this is what I always do). Or you can have a different static home page and keep your question feeder at another permalink.
+* You can make the question feeder your home page, or you can have a different static home page and keep your question feeder at another permalink.
 * You can assign one or more topics to each question. To display all the topics in one place, make a blank page that uses the *Topics* template. The page will be automatically generated from the topics you have entered.
 * If you want to show all your blog posts in one place, create a blank page using the *Post List* template. All your posts will be presented here in reverse chronological order.
 * Create a navigation menu from the WordPress customizer under the *Menus* panel. Then you can customize it under the *Navigation Bar* section of the *Essentials* panel.

@@ -42,7 +42,7 @@ function my_customize_register() {
     'capability'     => 'edit_theme_options',
     'theme_supports' => '',
     'title'          => __('Essentials'),
-    'description'    => 'Site subtitle, home page, question intro, etc.',
+    'description'    => 'Site subtitle, home page, etc.',
 	) );
 
 	$wp_customize->add_section( 'essentials_subtitle_sec', array(
@@ -57,17 +57,17 @@ function my_customize_register() {
 	'panel' 		=> 'essentials',
 	) );
 
-    $wp_customize->add_section( 'essentials_intro', array(
-    'title'          => __('Intro'),
-    'priority'      => 75,
-	'panel' 		=> 'essentials',
-	) );
-
 	$wp_customize->add_section( 'essentials_navbar', array(
     'title'          => __('Navigation Bar'),
     'priority'      => 55,
 	'panel' 		=> 'essentials',
 	) );
+
+	$wp_customize->add_section( 'essentials_format', array(
+		'title'          => __('Page Formatting'),
+		'priority'      => 95,
+		'panel' 		=> 'essentials',
+		) );
 
 	$wp_customize->add_section( 'essentials_footer', array(
     'title'          => __('Footer'),
@@ -75,10 +75,31 @@ function my_customize_register() {
 	'panel' 		=> 'essentials',
 	) );
 
+	$wp_customize->add_section( 'essentials_intro', array(
+		'title'          => __('Intro'),
+		'priority'      => 75,
+		'panel' 		=> 'essentials',
+		) );
+
 	$wp_customize->add_section( 'essentials_header', array(
 		'title'          => __('Header'),
 		'priority'      => 35,
 		'panel' 		=> 'essentials',
+		) );
+
+	$wp_customize->add_setting( 'essentials_ready', array(
+		'default' => ESS_READY,
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'transport' => '',
+		'sanitize_callback' => 'sanitize_text',
+		) );
+	
+	$wp_customize->add_control( 'essentials_ready', array(
+		'type' => 'text',
+		'section' => 'essentials_intro',
+		'label' => __('Ready?'),
+		'description' => __('Optional pump-up phrase'),
 		) );
 
 	$wp_customize->add_setting( 'essentials_body_bg', array(
@@ -143,53 +164,6 @@ function my_customize_register() {
 		'section'    => 'essentials_subtitle_sec',
 		'settings'   => 'essentials_subtitle_bg',
 	)));
-
-	/* INTRO */
-
-    $wp_customize->add_setting( 'essentials_heading', array(
-	'default' => ESS_HEADING,
-	'type' => 'theme_mod',
-	'capability' => 'edit_theme_options',
-	'transport' => '',
-	'sanitize_callback' => 'sanitize_text',
-	) );
-
-    $wp_customize->add_control( 'essentials_heading', array(
-    'type' => 'text',
-    'section' => 'essentials_intro',
-    'label' => __('Heading'),
-    'description' => __('Main Heading'),
-	) );
-
-    $wp_customize->add_setting( 'essentials_desc', array(
-	'default' => ESS_DESCRIPTION,
-	'type' => 'theme_mod',
-	'capability' => 'edit_theme_options',
-	'transport' => '',
-	'sanitize_callback' => 'sanitize_text',
-	) );
-
-    $wp_customize->add_control( 'essentials_desc', array(
-    'type' => 'textarea',
-    'section' => 'essentials_intro',
-    'label' => __('Description'),
-    'description' => __('Main Intro Description (HTML allowed)'),
-	) );
-
-    $wp_customize->add_setting( 'essentials_ready', array(
-	'default' => ESS_READY,
-	'type' => 'theme_mod',
-	'capability' => 'edit_theme_options',
-	'transport' => '',
-	'sanitize_callback' => 'sanitize_text',
-	) );
-
-    $wp_customize->add_control( 'essentials_ready', array(
-    'type' => 'text',
-    'section' => 'essentials_intro',
-    'label' => __('Ready?'),
-    'description' => __('Optional prompt to pump people up.'),
-	) );
 
 	/* NAVBAR */
 	$wp_customize->add_setting( 'essentials_navbar_text', array(
