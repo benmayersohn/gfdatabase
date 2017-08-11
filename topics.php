@@ -19,7 +19,12 @@ $terms = get_terms(array(
 
 // Create a table, thumbnail
 ?>  
-    <h2 class="text-center">Topics</h2>
+
+    <h2 class="text-center">Topics</h2><br>
+      <div>
+  <?php the_content();?>
+  </div>
+
   <table class="table table-bordered table-hover topic-table">
     <thead>
     <tr>

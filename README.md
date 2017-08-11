@@ -13,7 +13,7 @@ You'll need to do a few things to get up and running:
 **DO NOT CREATE MORE THAN ONE *Question Feeder* PAGE.**
 
 * You can make the question feeder your home page, or you can have a different static home page and keep your question feeder at another permalink.
-* You can assign one or more topics to each question. To display all the topics in one place, make a blank page that uses the *Topics* template. The page will be automatically generated from the topics you have entered.
+* You can assign one or more topics to each question. To display all the topics in one place, make a page that uses the *Topics* template. The page will be automatically generated from the topics you have entered, though you can enter content on the page and it will be shown before the list of topics.
 * If you want to show all your blog posts in one place, create a blank page using the *Post List* template. All your posts will be presented here in reverse chronological order.
 * Create a navigation menu from the WordPress customizer under the *Menus* panel. Then you can customize it under the *Navigation Bar* section of the *Essentials* panel.
 
