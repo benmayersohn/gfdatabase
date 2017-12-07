@@ -24,13 +24,13 @@ function custom_post_type() {
     
     // Set other options for Custom Post Type	
 	$args = array(
-		'label'               => __( 'gfd_questions'),
+		'label'               => __( 'questions'),
 		'description'         => __( 'Questions + Hints + Answers in Database'),
 		'labels'              => $labels,
 		// Features this CPT supports in Post Editor
 		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
 		// You can associate this CPT with a taxonomy or custom taxonomy. 
-		'taxonomies'          => array( 'topics' ),
+		'taxonomies'          => array( 'topics', 'post_tag'),
 		/* A hierarchical CPT is like Pages and can have
 		* Parent and child items. A non-hierarchical CPT
 		* is like Posts.
@@ -51,7 +51,7 @@ function custom_post_type() {
 	);
 	
 	// Registering your Custom Post Type
-	register_post_type( 'gfd_question', $args );
+	register_post_type( 'question', $args );
 
 }
 
@@ -66,38 +66,37 @@ add_action( 'init', 'custom_post_type', 0 );
 // --------------------- //
 
 /* Create Topic Taxonomy */
-add_action( 'init', 'create_topic_taxonomies', 0 );
+add_action( 'init', 'create_taxonomies', 0 );
 
-//create two taxonomies, genres and topics for the post type "topic"
-function create_topic_taxonomies() 
+function create_taxonomies() 
 {
-  // Add new taxonomy, NOT hierarchical (like topics)
-  $labels = array(
-    'name' => _x( 'Topics', 'taxonomy general name' ),
-    'singular_name' => _x( 'Topic', 'taxonomy singular name' ),
-    'search_items' =>  __( 'Search Topics' ),
-    'popular_items' => __( 'Popular Topics' ),
-    'all_items' => __( 'All Topics' ),
-    'parent_item' => null,
-    'parent_item_colon' => null,
-    'edit_item' => __( 'Edit Topic' ), 
-    'update_item' => __( 'Update Topic' ),
-    'add_new_item' => __( 'Add New Topic' ),
-    'new_item_name' => __( 'New Topic Name' ),
-    'separate_items_with_commas' => __( 'Separate topics with commas' ),
-    'add_or_remove_items' => __( 'Add or remove topics' ),
-    'choose_from_most_used' => __( 'Choose from the most used topics' ),
-    'menu_name' => __( 'Topics' ),
-  ); 
+        // Topics
+        $labels = array(
+        'name' => _x( 'Topics', 'taxonomy general name' ),
+        'singular_name' => _x( 'Topic', 'taxonomy singular name' ),
+        'search_items' =>  __( 'Search Topics' ),
+        'popular_items' => __( 'Popular Topics' ),
+        'all_items' => __( 'All Topics' ),
+        'parent_item' => null,
+        'parent_item_colon' => null,
+        'edit_item' => __( 'Edit Topic' ), 
+        'update_item' => __( 'Update Topic' ),
+        'add_new_item' => __( 'Add New Topic' ),
+        'new_item_name' => __( 'New Topic Name' ),
+        'separate_items_with_commas' => __( 'Separate topics with commas' ),
+        'add_or_remove_items' => __( 'Add or remove topics' ),
+        'choose_from_most_used' => __( 'Choose from the most used topics' ),
+        'menu_name' => __( 'Topics' ),
+        ); 
 
-  register_taxonomy('topic','gfd_question',array(
-    'hierarchical' => false,
-    'labels' => $labels,
-    'show_ui' => true,
-    'update_count_callback' => '_update_post_term_count',
-    'query_var' => true,
-    'rewrite' => array( 'slug' => 'topic' ),
-  ));
+        register_taxonomy('topic','question',array(
+        'hierarchical' => false,
+        'labels' => $labels,
+        'show_ui' => true,
+        'update_count_callback' => '_update_post_term_count',
+        'query_var' => true,
+        'rewrite' => array( 'slug' => 'topic' ),
+        ));
 }
 
 // --------------------- //
@@ -115,8 +114,8 @@ add_action('admin_init', 'wysiwyg_register_meta_box');
 add_action('save_post', 'question_save_meta');
 
 function wysiwyg_register_meta_box(){
-        add_meta_box(WYSIWYG_META_HINT_ID, __('Hint', 'gfd_hint'), 'hint_meta_box', 'gfd_question');
-        add_meta_box(WYSIWYG_META_ANSWER_ID, __('Answer', 'gfd_answer'), 'answer_meta_box', 'gfd_question');
+        add_meta_box(WYSIWYG_META_HINT_ID, __('Hint', 'gfd_hint'), 'hint_meta_box', 'question');
+        add_meta_box(WYSIWYG_META_ANSWER_ID, __('Answer', 'gfd_answer'), 'answer_meta_box', 'question');
 }
 
 function hint_meta_box(){
@@ -181,7 +180,7 @@ function wysiwyg_render_meta_box($meta_box_id, $meta_key){
 
 function question_save_meta(){
         global $post;
-        if ('gfd_question' == get_post_type()){
+        if ('question' == get_post_type()){
                 if (isset($_POST[WYSIWYG_META_HINT_KEY]))
                 {
                         $data = $_POST[WYSIWYG_META_HINT_KEY];

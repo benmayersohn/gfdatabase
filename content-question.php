@@ -1,5 +1,5 @@
 <div <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-    <h3 class="text-center question-topic"><?php the_title(); ?></h3>
+    <!--<h3 class="text-center question-topic"><?php the_title(); ?></h3>-->
     <div class="question-content">
     <?php the_content(); ?>
     </div>
@@ -40,10 +40,12 @@
     <?php if (is_front_page()) : ?>
     <a class="btn btn-primary return-button" href="<?php get_home_url();?>">Next</a>
     <?php elseif (isset($_GET[SHOW_QUESTION])) :
-        if (isset($_GET[TOPIC])) : ?>
-        <a class="btn btn-primary return-button" href="<?php echo FEEDER_LINK . '?' . TOPIC . '=' . $_GET[TOPIC] . '?' . SHOW_QUESTION . '=' . $_GET[SHOW_QUESTION] ;?>">Next</a>
+    	$show_question = filter_input(INPUT_GET, SHOW_QUESTION, FILTER_SANITIZE_STRING);
+        if (isset($_GET[TOPIC])) : $topic = filter_input(INPUT_GET, TOPIC, FILTER_SANITIZE_STRING); ?>
+        
+        <a class="btn btn-primary return-button" href="<?php echo FEEDER_LINK . '?' . SHOW_QUESTION . '=' . $show_question . '&' . TOPIC . '=' . $topic ;?>">Next</a>
         <?php else : ?>
-        <a class="btn btn-primary return-button" href="<?php echo FEEDER_LINK . '?' . SHOW_QUESTION . '=' . $_GET[SHOW_QUESTION] ?>">Next</a>
+        <a class="btn btn-primary return-button" href="<?php echo FEEDER_LINK . '?' . SHOW_QUESTION . '=' . $show_question ?>">Next</a>
         <?php endif; ?>
     <?php endif; ?>
 
@@ -52,10 +54,10 @@
         <div class="init-hidden answer-content" id="answer">
             <br><hr>
             <div style="text-align:left;">
-            <?php echo $answer; ?>
+            <?php echo $answer;?>
             </div>
             <?php if (isset($_GET[SHOW_QUESTION])) : ?>
-            <a class="btn btn-default permanent-link return-button" href="<?php the_permalink();?>">Permanent Link</a>
+            <a class="btn btn-default permanent-link return-button" target="_blank" href="<?php the_permalink();?>">Permanent Link</a>
             <?php endif; ?>
             <div class="question-comments text-left">
             <?php
@@ -66,17 +68,6 @@
             ?>
             </div>
         </div>
-
-        <script>
-        $(document).ready(function(){
-            $('#answer-button').click(
-                function(event){
-                    event.preventDefault();
-                    $('#answer').slideToggle('slow');
-                }
-            )
-        });
-        </script>
     <?php endif; ?>
     </div>
     </div>

@@ -7,20 +7,16 @@ We provide a list of topics in alphabetical order.
 
 get_header();
 
-define('SHOW_QUESTION','show-question');
-define('TOPIC','chosen-topic');
-define('FEEDER_LINK',question_feeder_permalink());
-
 // Get all topics
 $terms = get_terms(array(
     'taxonomy' => 'topic',
-    'hide_empty' => false,
+    'hide_empty' => true,
 ));
 
 // Create a table, thumbnail
 ?>  
 
-    <h2 class="text-center">Topics</h2><br>
+    <h2 class="text-center"><?php echo get_the_title()?></h2><br>
       <div>
   <?php the_content();?>
   </div>

@@ -1,16 +1,9 @@
 <?php
 
 require_once('wp-bootstrap-navwalker.php'); // for menu
-require_once('gfdquestion-functions.php'); // question post type + hint/answer
+require_once('question-functions.php'); // question post type + hint/answer
 require_once('customizer.php'); // theme customization
-
-// Replaces the excerpt "Read More" text by a link
-function new_excerpt_more($more) {
-	return '...<p><a class="moretopic" href="'. get_permalink() . '"> (Continue)</a></p>';
-}
-add_filter('excerpt_more', 'new_excerpt_more');
-
-/* Theme setup */
+require_once('default_theme_vals.php');
 
 // Get permalink for question feeder
 // either home or separate question feeder page
@@ -43,6 +36,42 @@ function question_feeder_permalink(){
 	return $link;
 }
 
+defined('FEEDER_LINK') or define('FEEDER_LINK', question_feeder_permalink());
+
+function wp_42573_fix_template_caching( WP_Screen $current_screen ) {
+	// Only flush the file cache with each request to post list table, edit post screen, or theme editor.
+	if ( ! in_array( $current_screen->base, array( 'post', 'edit', 'theme-editor' ), true ) ) {
+		return;
+	}
+	$theme = wp_get_theme();
+	if ( ! $theme ) {
+		return;
+	}
+	$cache_hash = md5( $theme->get_theme_root() . '/' . $theme->get_stylesheet() );
+	$label = sanitize_key( 'files_' . $cache_hash . '-' . $theme->get( 'Version' ) );
+	$transient_key = substr( $label, 0, 29 ) . md5( $label );
+	delete_transient( $transient_key );
+}
+add_action( 'current_screen', 'wp_42573_fix_template_caching' );
+
+add_theme_support( 'post-thumbnails' );
+
+// Replaces the excerpt "Read More" text by a link
+function new_excerpt_more($more) {
+	return '...<p><a class="moretopic" href="'. get_permalink() . '"> (Continue)</a></p>';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
+/* Theme setup */
+
+function get_num_questions($terms){
+	$count = 0;
+	foreach ($terms as $term){
+		$count = $count + ($term->count);
+	}
+	return $count;
+}
+
 /* Images */
 $args = array(
 	'flex-width'    => true,
@@ -61,14 +90,38 @@ add_action( 'after_setup_theme', 'wpt_setup' );
 		}
 	}
 
+
 function wpt_register_js() {
-    wp_register_script('jquery.bootstrap.min', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', 'jquery');
+    wp_register_script('jquery.bootstrap.min', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array('jquery'));
     wp_enqueue_script('jquery.bootstrap.min');
+    
+    wp_register_script('scroll-top', TEMPLATE_DIR . '/assets/js/scroll-top.js', array('jquery'));
+    wp_enqueue_script('scroll-top');
+    
+    // Only include MathJax and the question javascript when the post type is a question
+    if (get_post_type() === 'question' || get_post_meta( get_the_ID(), '_wp_page_template', true ) === 'question-feeder.php'){
+    	wp_register_script('mathjax', 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML');
+    	wp_enqueue_script('mathjax');
+    
+	wp_register_script('question', TEMPLATE_DIR . '/assets/js/question.js', array('jquery'));
+    	wp_enqueue_script('question');
+    }
 }
-add_action( 'init', 'wpt_register_js' );
+add_action( 'wp_enqueue_scripts', 'wpt_register_js' );
 
 function wpt_register_css() {
     wp_register_style( 'bootstrap.min', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' );
     wp_enqueue_style( 'bootstrap.min' );
+    
+    wp_register_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
+    wp_enqueue_style('font-awesome');
+    
+    wp_register_style('normalize', TEMPLATE_DIR . '/assets/css/normalize.css');
+    wp_enqueue_style('normalize');
+    
+    wp_enqueue_style( 'parent-style', TEMPLATE_DIR . '/style.css' );
+    if (TEMPLATE_DIR !== STYLESHEET_DIR){
+    wp_enqueue_style( 'child-style', STYLESHEET_DIR . '/style.css', array( 'parent-style' ) );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'wpt_register_css' );

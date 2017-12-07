@@ -17,25 +17,20 @@ get_header(); ?>
 
     // See if we've passed GET parameter ?show-question=true
     // Otherwise show intro screen
-    define('SHOW_QUESTION','show-question');
-    define('TOPIC','chosen-topic');
 
-    $topic = $_GET[TOPIC];
-    define('FEEDER_LINK',question_feeder_permalink());
-
-    if (isset($_GET[SHOW_QUESTION]) && $_GET[SHOW_QUESTION] === '1'){
+    if (isset($_GET[SHOW_QUESTION]) && filter_input(INPUT_GET, SHOW_QUESTION, FILTER_SANITIZE_STRING) === '1'){
 
         if (isset($_GET[TOPIC])) {
             $tax_query = array(
             array(
 			'taxonomy' => 'topic',
 			'field'    => 'slug',
-			'terms'    => $topic,
+			'terms'    => filter_input(INPUT_GET, TOPIC, FILTER_SANITIZE_STRING),
 		    ));
-            $args = array ('post_type' => 'gfd_question', 'orderby' => 'rand', 'tax_query' => $tax_query, 'posts_per_page' => '1' );
+            $args = array ('post_type' => 'question', 'orderby' => 'rand', 'tax_query' => $tax_query, 'posts_per_page' => '1' );
         }
         else{
-            $args = array ('post_type' => 'gfd_question', 'orderby' => 'rand', 'posts_per_page' => '1' );
+            $args = array ('post_type' => 'question', 'orderby' => 'rand', 'posts_per_page' => '1' );
         }
 
         $question_query = new WP_Query($args);
@@ -50,14 +45,17 @@ get_header(); ?>
         } 
         
         while ( $question_query->have_posts() ) : $question_query->the_post(); 
-        get_template_part('content-gfd_question');
+        get_template_part('content-question');
         ?>
 
         <?php endwhile; wp_reset_postdata(); 
     }
     // Otherwise, we show intro dialog (unless we enter some invalid input, in which case we show nothing.)
     else{
-        if (!isset($_GET[TOPIC]) || (isset($_GET[TOPIC]) && get_term_by('slug',$_GET[TOPIC],'topic'))){
+        if (!isset($_GET[TOPIC]) && !is_front_page()){
+            echo "<h2 class=\"text-center question-topic\">" . get_the_title() . "</h2>";
+        }
+        if (!isset($_GET[TOPIC]) || (isset($_GET[TOPIC]) && get_term_by('slug',filter_input(INPUT_GET, TOPIC, FILTER_SANITIZE_STRING),'topic'))){
             get_template_part('intro-gfd');
         }
         else{

@@ -5,14 +5,13 @@
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	<meta charset="utf-8">
-	<title><?php wp_title('|',true,'right'); ?><?php bloginfo('name'); ?></title>
+	<title><?php wp_title('|',true,'right'); ?></title>
   	<meta name="description" content="<?php bloginfo('description'); ?>">
 	  <meta name="author" content="Ben Mayersohn">
 	
 
   	<?php 
-	  define("TEMPLATE_DIR",get_template_directory_uri());
-	  include('default_theme_vals.php');
+	  require_once('default_theme_vals.php');
 	?>
 
 	<!-- Mobile Specific Metas
@@ -23,10 +22,6 @@
 	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
 
-	<!-- CSS
-	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-	<link rel="stylesheet" href="<?php echo TEMPLATE_DIR; ?>/assets/css/normalize.css">
-	<link rel="stylesheet" href="<?php echo TEMPLATE_DIR; ?>/style.css">
 
 	<!-- These style values are set in WordPress customizer -->
 	<?php 
@@ -50,26 +45,29 @@
 	}"
 	;
 
-	if (get_theme_mod('essentials_body_header_bg_img') != ''){
+	$featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full');
+	if ( $featured_img_url && !home_url()) {
 		echo ".pre-nav{
 		background-color: transparent;
-		background-image: url('" . get_theme_mod('essentials_body_header_bg_img') . "');}";
+		background-image: url('" . $featured_img_url . "');}";
 	}
-	elseif (get_theme_mod('essentials_body_header_bg_color') != ''){
-		echo ".pre-nav{
-			background-color: " . get_theme_mod('essentials_body_header_bg_color',BODY_BACKGROUND) . ";}";
+	else{
+		if (get_theme_mod('essentials_body_header_bg_img') != ''){
+			echo ".pre-nav{
+			background-color: transparent;
+			background-image: url('" . get_theme_mod('essentials_body_header_bg_img') . "');}";
+		}
+		elseif (get_theme_mod('essentials_body_header_bg_color') != ''){
+			echo ".pre-nav{
+				background-color: " . get_theme_mod('essentials_body_header_bg_color',BODY_BACKGROUND) . ";}";
+		}
 	}
 	echo "</style>";
 	?>
-
-	<!-- Scripts
-	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <?php wp_head();?>
 </head>
-<body style=
+<body data-spy="scroll" style=
 "<?php echo "background-color: " . get_theme_mod('essentials_body_bg',BODY_BACKGROUND);?>;
 color:<?php echo get_theme_mod('essentials_body_text_color',BODY_TEXT_COLOR);?>;">
 
@@ -84,6 +82,10 @@ color:<?php echo get_theme_mod('essentials_body_text_color',BODY_TEXT_COLOR);?>;
 			<h1 class="main-subtitle" style="background-color:<?php echo get_theme_mod('essentials_subtitle_bg',SUBTITLE_BG_DEFAULT); ?>"><?php echo get_theme_mod('essentials_subtitle_text',SUBTITLE_TEXT_DEFAULT); ?></h1>
 			</div>
 			<div class="navbar-before"></div>
+
+			<a class="scroll-up-button">
+        	<i class="fa fa-arrow-up fa-lg" aria-hidden="true"></i>
+    		</a>
 			
 			<div id="dropdown-button" class="navbar-header">
 				<a class="navbar-toggle collapsed btn btn-navbar" style="color:<?php echo get_theme_mod('essentials_navbar_mobile_color',NAVBAR_MOBILE_DEFAULT);?>;" data-toggle="collapse" data-target="#main-menu">

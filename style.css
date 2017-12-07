@@ -14,6 +14,42 @@ Tags: bootstrap, questions, problems
 	text-align:center;
 }
 
+.page-numbers {
+	display: inline-block;
+	padding: 5px 10px;
+	margin: 0 2px 0 0;
+	border: 1px solid #eee;
+	line-height: 1;
+	text-decoration: none;
+	border-radius: 2px;
+	font-weight: 600;
+}
+.page-numbers.current,
+a.page-numbers:hover {
+	background: #f9f9f9;
+}
+
+.scroll-up-button{
+    visibility:hidden;
+    background-color:rgba(200,200,300,0.8);
+    color:black;
+    border-radius:5px;
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    z-index:1000;
+    cursor:pointer;
+    border-width:2px;
+    padding:10px;
+    border-style:solid;
+}
+
+a.scroll-up-button:visited,a.scroll-up-button:hover{
+    color:black;
+    cursor:pointer;
+    border-color:black;
+}
+
 .question-style,.question-topic{
     margin-bottom:30px;
 }
@@ -62,7 +98,6 @@ img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
 .navbar-inner{
     text-align:center;
     align-content:center;
-    padding-top:20px;
 }
 
 .navbar-header{
@@ -77,6 +112,16 @@ img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
     margin-top:0px;
     padding-top:0px;
     padding-bottom:0px;
+}
+
+li.sub-menu>ul{
+	padding-top:20px;
+	padding-bottom:0px;
+	text-align:center;
+}
+
+li.sub-menu-item{
+	text-align:center;
 }
 
 #title-img{
@@ -162,8 +207,12 @@ li{
 }
 
 ul,ol{
-    padding-top:15px;
-    padding-bottom:15px;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+li ul{
+    padding-bottom:0px;
 }
 
 img{
@@ -181,6 +230,14 @@ aligncenter{
 h3{
     padding-bottom:15px;
     padding-top:15px;
+}
+
+.caret{
+display:none !important;
+}
+
+.nf-form-fields-required {
+  display: none;
 }
 
 /* Mobile Real Small */
@@ -217,14 +274,18 @@ h3{
     h2.text-center{
         font-size:25px;
     }
+    
+    h3.text-center{
+        font-size:22px;
+    }
 
     .screen-reader-text{
         margin-top:30px;
     }
 
     ul,ol{
-        padding-top:10px;
-        padding-bottom:10px;
+        padding-top:5px;
+        padding-bottom:5px;
     }
 }
 
@@ -245,8 +306,8 @@ h3{
     }
 
     ul,ol{
-        padding-top:10px;
-        padding-bottom:10px;
+        padding-top:5px;
+        padding-bottom:5px;
     }
 
     #dropdown-button{
@@ -265,6 +326,10 @@ h3{
 
     h2.text-center{
         font-size:23px;
+    }
+    
+    h3.text-center{
+        font-size:20px;
     }
 
     .screen-reader-text{
@@ -305,6 +370,10 @@ h3{
     h2.text-center{
         font-size:23px;
     }
+    
+    h3.text-center{
+        font-size:20px;
+    }
 
     .screen-reader-text{
         margin-top:30px;
@@ -344,6 +413,10 @@ h3{
     h2.text-center{
         font-size:22px;
     }
+    
+    h3.text-center{
+        font-size:19px;
+    }
 
     .main-subtitle{
         font-size:23px;
@@ -369,6 +442,10 @@ h3{
     .mobile-indicator{
         display:none;
     }
+    
+    .navbar-inner{
+    	padding-top:20px;
+    	}
 
     p,li,#main-menu>ul>li>a,.return-button,td {
         font-size:16px;
@@ -376,6 +453,10 @@ h3{
 
     h2.text-center{
         font-size:22px;
+    }
+    
+    h3.text-center{
+        font-size:19px;
     }
 
     .main-subtitle{
@@ -410,6 +491,10 @@ h3{
     .mobile-indicator{
         display:none;
     }
+    
+    .navbar-inner{
+    	padding-top:20px;
+    	}
 
     p,li,#main-menu>ul>li>a,.return-button,td {
         font-size:16px;
@@ -417,6 +502,10 @@ h3{
 
     h2.text-center{
         font-size:24px;
+    }
+    
+    h3.text-center{
+        font-size:21px;
     }
 
     .main-subtitle{
@@ -455,6 +544,10 @@ h3{
     .mobile-indicator{
         display:none;
     }
+    
+    .navbar-inner{
+    	padding-top:20px;
+    	}
 
     .main-subtitle{
         font-size:25px;
@@ -500,6 +593,10 @@ h3{
     .mobile-indicator{
         display:none;
     }
+    
+    .navbar-inner{
+    	padding-top:20px;
+    	}
 
     .footer-hr{
         visibility:hidden; 

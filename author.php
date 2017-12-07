@@ -2,25 +2,16 @@
 get_header(); ?>
 <div class="container page">
 <main id="main" class="site-main" role="main">
-<h2 class="text-center question-topic">Blog</h2>
+<h2 class="text-center question-topic"><?php $title = get_the_author(); echo $title;?></h2>
 <?php 
 if ( have_posts() ) : 
         $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
         $args =  array( 
             'paged'             => $paged,
             'posts_per_page'    => get_option('posts_per_page'),
+            'author'     => get_the_author_meta( 'ID' )
         ); 
-        $the_query = new WP_Query($args); 
-
-        if (in_array($paged, array(0,1))): // first page 
-        ?> 
-        <div style="text-align:center;">
-        <h4 class="text-center question-topic">
-        Thanks for visiting! Posts are listed in reverse-chronological order.
-        </h4>
-        </div>
-        <hr/>
-        <?php endif; ?>
+        $the_query = new WP_Query($args); ?>
 
 	<?php include('list-of-posts.php'); ?>
         
