@@ -1,6 +1,6 @@
 <?php
 get_header(); ?>
-<div class="container page">
+<div class="page">
 <main id="main" class="site-main" role="main">
 <h2 class="text-center question-topic"><?php $title = single_cat_title( '', false ); echo $title;?></h2>
 <?php 
@@ -23,4 +23,5 @@ if ( have_posts() ) :
         </div>
     </div>
 </main>
+</div>
 <?php get_footer();

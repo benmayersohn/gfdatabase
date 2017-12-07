@@ -1,6 +1,6 @@
 <?php
 get_header(); ?>
-<div class="container page">
+<div class="page">
 <main id="main" class="site-main" role="main">
 <h2 class="text-center question-topic">Blog</h2>
 <?php 
@@ -30,6 +30,12 @@ if ( have_posts() ) :
         <div class="col-lg-4 col-md-3">
         <?php get_sidebar(); ?>
         </div>
-    </div>
+        
+        </div>
+
 </main>
-<?php get_footer();
+</div>
+<?php get_footer(); ?>
+        
+        
+        

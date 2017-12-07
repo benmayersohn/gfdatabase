@@ -1,6 +1,6 @@
 <?php
 get_header(); ?>
-<div class="container page">
+<div class="page">
 <main id="main" class="site-main" role="main">
 <?php 
 if ( is_day() ) :
@@ -43,4 +43,5 @@ if ( have_posts() ) :
         </div>
     </div>
 </main>
-<?php get_footer();
+</div>
+<?php get_footer(); ?>

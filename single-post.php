@@ -27,14 +27,20 @@
         </div>
     </div>
         
-
         <?php
         // End the loop.
         endwhile;?>
         </div>
-
-
-    </div>
+        <hr/>
+        <div class="question-comments text-left">
+            <?php
+             // If comments are open or we have at least one comment, load up the comment template.
+            if ( comments_open() || get_comments_number() ) :
+             comments_template();
+            endif;
+            ?>
+        </div>  
+            </div>
 
 </main><!-- .site-main -->
 

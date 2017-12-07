@@ -5,6 +5,11 @@ require_once('question-functions.php'); // question post type + hint/answer
 require_once('customizer.php'); // theme customization
 require_once('default_theme_vals.php');
 
+function custom_theme_setup() {
+    add_theme_support( 'html5', array( 'comment-list' ) );
+}
+add_action( 'after_setup_theme', 'custom_theme_setup' );
+
 // Get permalink for question feeder
 // either home or separate question feeder page
 function question_feeder_permalink(){
