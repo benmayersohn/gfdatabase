@@ -19,7 +19,6 @@ if ( have_posts() ) :
         Thanks for visiting! Posts are listed in reverse-chronological order.
         </h4>
         </div>
-        <hr/>
         <?php endif; ?>
 
 	<?php include('list-of-posts.php'); ?>

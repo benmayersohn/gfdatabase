@@ -1,3 +1,5 @@
+<?php get_search_form();?>
+<hr/>
 <div class="row">
         <div class="col-lg-8 col-md-7 middle-panel-rise">
         <?php while ( have_posts() ) : the_post();?>
@@ -7,7 +9,7 @@
         </h2>
     
         <a href="<?php echo esc_url(get_the_permalink());?>">
-        <img class="img-responsive" style="width:450px;height:250px;border-style:solid;border-width:3px;border-color:black;" src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full');?>">
+        <img alt="" class="img-responsive" style="width:450px;height:250px;border-style:solid;border-width:3px;border-color:black;" src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full');?>">
         </a>
 
         <h6 class="post-meta">

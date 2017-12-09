@@ -12,6 +12,11 @@
 
   	<?php 
 	  require_once('default_theme_vals.php');
+	  
+	  // Add transparency to arrow background color
+	  $hex = get_theme_mod('essentials_scrollup_bg',SCROLLUP_BG_COLOR);
+	  list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
+	  $arrow_bg = "rgba($r, $g, $b, " . SCROLLUP_BG_OPACITY . ")";
 	?>
 
 	<!-- Mobile Specific Metas
@@ -42,6 +47,13 @@
 	#dropdown-button{
     border-color: " . get_theme_mod('essentials_navbar_mobile_color',NAVBAR_MOBILE_DEFAULT) . ";
 	background-color: " . get_theme_mod('essentials_body_bg',BODY_BACKGROUND) . ";
+	}
+	.scroll-up-button{
+	background-color: " . $arrow_bg . ";
+	color: " . get_theme_mod('essentials_scrollup_color',SCROLLUP_ARROW_COLOR) . ";
+	}
+	a.scroll-up-button:visited,a.scroll-up-button:hover{
+	color: " . get_theme_mod('essentials_scrollup_color',SCROLLUP_ARROW_COLOR) . ";
 	}"
 	;
 

@@ -5,6 +5,17 @@ require_once('question-functions.php'); // question post type + hint/answer
 require_once('customizer.php'); // theme customization
 require_once('default_theme_vals.php');
 
+//Exclude pages from WordPress Search
+if (!is_admin()) {
+function wpb_search_filter($query) {
+if ($query->is_search) {
+$query->set('post_type', 'post');
+}
+return $query;
+}
+add_filter('pre_get_posts','wpb_search_filter');
+}
+
 function custom_theme_setup() {
     add_theme_support( 'html5', array( 'comment-list' ) );
 }
@@ -124,7 +135,7 @@ function wpt_register_css() {
     wp_register_style('normalize', TEMPLATE_DIR . '/assets/css/normalize.css');
     wp_enqueue_style('normalize');
     
-    wp_enqueue_style( 'parent-style', TEMPLATE_DIR . '/style.css' );
+    wp_enqueue_style( 'parent-style', TEMPLATE_DIR . '/style.css');
     if (TEMPLATE_DIR !== STYLESHEET_DIR){
     wp_enqueue_style( 'child-style', STYLESHEET_DIR . '/style.css', array( 'parent-style' ) );
     }

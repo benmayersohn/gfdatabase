@@ -50,6 +50,12 @@ function my_customize_register() {
     'priority'      => 45,
 	'panel' 		=> 'essentials',
 	) );
+	
+	$wp_customize->add_section( 'essentials_arrow_sec', array(
+    'title'          => __('Scroll Arrow'),
+    'priority'      => 95,
+	'panel' 		=> 'essentials',
+	) );
 
 	$wp_customize->add_section( 'essentials_body', array(
     'title'          => __('Body'),
@@ -312,6 +318,40 @@ function my_customize_register() {
 			'section'    => 'essentials_header',
 			'settings'   => 'essentials_body_header_bg_color',
 		)));
+		
+		
+		
+	$wp_customize->add_setting( 'essentials_scrollup_bg', array(
+	'default' => SCROLLUP_BG_COLOR,
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
+	'transport' => '',
+	) );
+
+	$wp_customize->add_control(new WP_Customize_Color_Control( 
+	$wp_customize, 
+	'arrow_bg', 
+	array(
+		'label'      => __( 'Scroll Arrow Background Color'),
+		'section'    => 'essentials_arrow_sec',
+		'settings'   => 'essentials_scrollup_bg',
+	)));
+	
+	$wp_customize->add_setting( 'essentials_scrollup_color', array(
+	'default' => SCROLLUP_ARROW_COLOR,
+	'type' => 'theme_mod',
+	'capability' => 'edit_theme_options',
+	'transport' => '',
+	) );
+
+	$wp_customize->add_control(new WP_Customize_Color_Control( 
+	$wp_customize, 
+	'arrow_color', 
+	array(
+		'label'      => __( 'Scroll Arrow Color'),
+		'section'    => 'essentials_arrow_sec',
+		'settings'   => 'essentials_scrollup_color',
+	)));
 
 } 
 
