@@ -58,7 +58,7 @@
 	;
 
 	$featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full');
-	if ( $featured_img_url && !is_home()) {
+	if ( $featured_img_url && !(get_post_type(get_the_ID()) === 'post') ) {
 		echo ".pre-nav{
 		background-color: transparent;
 		background-image: url('" . $featured_img_url . "');}";
