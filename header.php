@@ -29,6 +29,7 @@
 
 
 	<!-- These style values are set in WordPress customizer -->
+	
 	<?php 
 	echo "<style>
 	#main-menu>.nav>li>a:focus, #main-menu>.nav>li>a:hover {
@@ -54,9 +55,8 @@
 	}
 	a.scroll-up-button:visited,a.scroll-up-button:hover{
 	color: " . get_theme_mod('essentials_scrollup_color',SCROLLUP_ARROW_COLOR) . ";
-	}"
-	;
-
+	}
+	";
 	$featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full');
 	if ( $featured_img_url && !(get_post_type(get_the_ID()) === 'post') ) {
 		echo ".pre-nav{

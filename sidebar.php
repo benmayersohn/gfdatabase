@@ -1,4 +1,3 @@
-
 <?php 
 // get recent posts
 $args = array (
@@ -40,5 +39,4 @@ $args = array(
 
 wp_list_categories($args); 
 ?>
-
 </div>

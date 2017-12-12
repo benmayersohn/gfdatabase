@@ -33,13 +33,15 @@ if ( have_posts() ) :
         }
         $the_query = new WP_Query($args); ?>
 
+	<?php get_sidebar('widgety-top'); ?>
+
 	<?php include('list-of-posts.php'); ?>
         
         <?php endif;wp_reset_postdata();?>
         </div>
 
         <div class="col-lg-4 col-md-3">
-        <?php get_sidebar(); ?>
+        <?php get_sidebar();?>
         </div>
     </div>
 </main>

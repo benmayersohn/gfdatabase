@@ -5,6 +5,7 @@
 	$search_string = esc_html(get_search_query());?>
 	<h2 class="text-center question-topic">Search Results</h2>
 	<h5 id="searchedfor">Searched for: "<?php echo $search_string;?>"</h5>
+	<?php get_sidebar('widgety-top'); ?>
 	<?php 
 	if ( have_posts() ) : 
 		$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
@@ -22,7 +23,7 @@
         </div>
 
         <div class="col-lg-4 col-md-3">
-        <?php get_sidebar(); ?>
+        <?php get_sidebar();?>
         </div>
 
     </div>

@@ -280,7 +280,7 @@ display:none !important;
     }
 
     .main-subtitle{
-        font-size:18px;
+        font-size:16px;
     }
 
      p,li,#main-menu>ul>li>a,.return-button,td {
@@ -435,7 +435,7 @@ display:none !important;
     }
 
     .main-subtitle{
-        font-size:23px;
+        font-size:19px;
     }
 
     .screen-reader-text{
@@ -476,7 +476,7 @@ display:none !important;
     }
 
     .main-subtitle{
-        font-size:23px;
+        font-size:21px;
     }
 
     .footer-hr{
@@ -525,7 +525,7 @@ display:none !important;
     }
 
     .main-subtitle{
-        font-size:23px;
+        font-size:22px;
     }
 
     .footer-hr{
@@ -565,16 +565,12 @@ display:none !important;
     	padding-top:20px;
     	}
 
-    .main-subtitle{
-        font-size:25px;
-    }
-
     p,li,#main-menu>ul>li>a,.return-button,td {
         font-size:18px;
     }
 
     .main-subtitle{
-        font-size:25px;
+        font-size:23px;
     }
 
     .footer-hr{
@@ -619,7 +615,7 @@ display:none !important;
     }
 
     .main-subtitle{
-        font-size:25px;
+        font-size:23px;
     }
 
     p,li,#main-menu>ul>li>a,.return-button,td {

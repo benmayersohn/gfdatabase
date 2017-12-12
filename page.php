@@ -3,6 +3,7 @@
 <main id="main" class="site-main" role="main">
 
     <?php while ( have_posts() ) : the_post();?>
+    
     <div <?php post_class(); ?> id="post-<?php the_ID(); ?>">
         <!-- Put title if hide-title meta entry is (1) set to false or (2) not set at all -->
         <?php 

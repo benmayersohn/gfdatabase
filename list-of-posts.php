@@ -1,5 +1,3 @@
-<?php get_search_form();?>
-<hr/>
 <div class="row">
         <div class="col-lg-8 col-md-7 middle-panel-rise">
         <?php while ( have_posts() ) : the_post();?>

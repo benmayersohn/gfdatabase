@@ -30,16 +30,8 @@
         <?php
         // End the loop.
         endwhile;?>
-        
-        </div>
-        
-        <div class="col-lg-4 col-md-3">
-        <?php get_sidebar(); ?>
-        </div>
-        
-        </div>
-        
-        <hr/>
+			
+		<hr/>
         <div class="question-comments text-left">
             <?php
              // If comments are open or we have at least one comment, load up the comment template.
@@ -48,6 +40,16 @@
             endif;
             ?>
         </div>
+        </div>
+	
+	<div class="col-lg-4 col-md-3">
+        <?php get_sidebar('widgety'); ?>
+        <?php get_sidebar();?>
+        </div>
+        
+        </div>
+        
+        
  
 
 </main><!-- .site-main -->

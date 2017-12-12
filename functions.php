@@ -5,6 +5,30 @@ require_once('question-functions.php'); // question post type + hint/answer
 require_once('customizer.php'); // theme customization
 require_once('default_theme_vals.php');
 
+
+add_action( 'widgets_init', 'configure_sidebars' );
+function configure_sidebars(){
+	register_sidebar( array(
+        'name' => 'Dynamic Sidebar',
+        'id' => 'widgety',
+        'description' => 'Widgets in this area will be shown on post lists',
+        'before_widget' => '<div id="%1$s" class="widget %2$s unstyled">',
+	'after_widget'  => '</div>',
+	'before_title'  => '<h3 class="widgettitle">',
+	'after_title'   => '</h3>',
+    ) );
+    
+    register_sidebar( array(
+        'name' => 'Dynamic Top',
+        'id' => 'widgety-top',
+        'description' => 'Widgets in this area will be shown on post lists',
+        'before_widget' => '<div id="%1$s" class="widget %2$s unstyled">',
+	'after_widget'  => '</div>',
+	'before_title'  => '<h3 class="widgettitle">',
+	'after_title'   => '</h3>',
+    ) );
+}
+
 //Exclude pages from WordPress Search
 if (!is_admin()) {
 function wpb_search_filter($query) {

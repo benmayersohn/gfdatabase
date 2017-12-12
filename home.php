@@ -10,16 +10,9 @@ if ( have_posts() ) :
             'paged'             => $paged,
             'posts_per_page'    => get_option('posts_per_page'),
         ); 
-        $the_query = new WP_Query($args); 
+        $the_query = new WP_Query($args); ?>
 
-        if (in_array($paged, array(0,1))): // first page 
-        ?> 
-        <div style="text-align:center;">
-        <h4 class="text-center question-topic">
-        Thanks for visiting! Posts are listed in reverse-chronological order.
-        </h4>
-        </div>
-        <?php endif; ?>
+        <?php get_sidebar('widgety-top'); ?>
 
 	<?php include('list-of-posts.php'); ?>
         
@@ -27,7 +20,8 @@ if ( have_posts() ) :
         </div>
 
         <div class="col-lg-4 col-md-3">
-        <?php get_sidebar(); ?>
+        <?php get_sidebar('widgety'); ?>
+        <?php get_sidebar();?>
         </div>
         
         </div>
