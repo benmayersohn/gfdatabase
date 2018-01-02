@@ -1,7 +1,7 @@
 /*
 Theme Name: GFDatabase
 Author: Ben Mayersohn
-Author URI: https://benmayersohn.github.io
+Author URI: https://benmayersohn.com
 Description: Question/Answer database theme. Uses Bootstrap CSS/JS
 Version: 0.0.1
 Tags: bootstrap, questions, problems
@@ -46,6 +46,11 @@ Tags: bootstrap, questions, problems
 .page-numbers.current,
 a.page-numbers:hover {
 	background: #f9f9f9;
+}
+
+.wp-caption-text{
+	text-align:center;
+	font-size:12px;
 }
 
 .scroll-up-button{

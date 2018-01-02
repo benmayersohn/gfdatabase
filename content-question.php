@@ -47,6 +47,8 @@
         <?php else : ?>
         <a class="btn btn-primary return-button" href="<?php echo FEEDER_LINK . '?' . SHOW_QUESTION . '=' . $show_question ?>">Next</a>
         <?php endif; ?>
+		<br>
+            <a class="btn btn-default permanent-link return-button" target="_blank" href="<?php the_permalink();?>">Permanent Link</a>
     <?php endif; ?>
 
     <?php
@@ -56,9 +58,6 @@
             <div style="text-align:left;">
             <?php echo $answer;?>
             </div>
-            <?php if (isset($_GET[SHOW_QUESTION])) : ?>
-            <a class="btn btn-default permanent-link return-button" target="_blank" href="<?php the_permalink();?>">Permanent Link</a>
-            <?php endif; ?>
             
         </div>
     <?php endif; ?>

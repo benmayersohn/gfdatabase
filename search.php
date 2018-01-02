@@ -17,11 +17,18 @@
         ); 
 		$the_query = new WP_Query($args);
 		include('list-of-posts.php'); ?>
-    
+		
+	<?php else: ?>
+	<div class="row">
+        <div class="col-lg-8 col-md-7 middle-panel-rise">
+		<div class="text-center question-topic">
+			<h3>Nothing found!</h3>
+		</div>
+		<hr/>
     <?php endif; wp_reset_postdata();?>
-        
-        </div>
-
+	
+		</div>
+	
         <div class="col-lg-4 col-md-3">
         <?php get_sidebar();?>
         </div>

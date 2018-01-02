@@ -1,7 +1,7 @@
 <?php
 /* CUSTOMIZE */
 
-include('default_theme_vals.php');
+require_once('default_theme_vals.php');
 
 // Credits to: https://wptheming.com/2015/07/customizer-control-arbitrary-html/
 if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'Prefix_Custom_Content' ) ) :
