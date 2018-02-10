@@ -118,7 +118,6 @@ color:<?php echo get_theme_mod('essentials_body_text_color',BODY_TEXT_COLOR);?>;
 							'walker'            => new WP_Bootstrap_Navwalker())
 						);
 			?>
-											
 		</section>
 		<hr class="non-mobile-separator">
 										

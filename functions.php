@@ -5,18 +5,6 @@ require_once('question-functions.php'); // question post type + hint/answer
 require_once('customizer.php'); // theme customization
 require_once('default_theme_vals.php');
 
-/*
-function myplugin_custom_walker( $args ) {
-    return array_merge( $args, array(
-		'container'         => 'div',
-		'container_class'   => 'navbar-inner navbar-collapse collapse',
-		'menu_class'        => 'nav nav-pills nav-justified',
-        'walker' => new WP_Bootstrap_Navwalker(),
-    ) );
-}
-add_filter( 'wp_nav_menu_args', 'myplugin_custom_walker' );
-*/
-
 add_action( 'widgets_init', 'configure_sidebars' );
 function configure_sidebars(){
 	register_sidebar( array(

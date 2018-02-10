@@ -8,7 +8,10 @@ The key to GFDatabase! This is what feeds the questions randomly.
 
 get_header(); ?>
 
+<div class="page">
 <main id="main" class="site-main" role="main">
+	<div class="row">
+        <div class="col-lg-8 col-md-7 middle-panel-rise">
     <?php 
 
     /* If we've submitted questions thus far, pick a random one and display it.
@@ -63,8 +66,16 @@ get_header(); ?>
         }
     }
     ?>
+	
+		</div>
+		<div class="col-lg-4 col-md-5">
+			<?php get_sidebar('widgety'); ?>
+			<?php get_sidebar('footer');?>
+		</div>
+        
+        </div>
     
 </main><!-- .site-main -->
-
+</div>
 <?php get_footer(); ?>
 

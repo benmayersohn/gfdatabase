@@ -6,6 +6,7 @@ $args = array (
     );
     $recent_posts = wp_get_recent_posts( $args );
 ?>
+<hr>
 <div id="right-panel-rise">
 <h3>Recent Posts</h3>
 <ul class="list-unstyled">

@@ -1,6 +1,8 @@
 <?php get_header(); ?>
 <div class="page">
 <main id="main" class="site-main" role="main">
+	<?php get_sidebar('widgety-top'); ?>
+	<hr>
 <div class="row">
         <div class="col-lg-8 col-md-7 middle-panel-rise">
         
@@ -8,7 +10,9 @@
         
         <div <?php post_class(); ?> id="post-<?php the_ID(); ?>">
         <h2 class="text-center question-topic"><?php the_title(); ?></h2>
-        <img alt="" class="img-responsive" style="width:400px;height:250px;border-style:solid;border-width:3px;border-color:black;" src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full');?>">
+		<?php $img_src = get_the_post_thumbnail_url(get_the_ID(), array(400, 200)); if ($img_src) : ?>
+        <img alt="" class="img-responsive" style="<?php echo FEATURED_IMG_STYLE; ?>" src="<?php echo $img_src;?>">
+		<?php endif; ?>
         <h5 class="post-meta">
         Posted by: <?php echo get_the_author();?> in <?php 
         $categories = get_the_category();
@@ -42,9 +46,10 @@
         </div>
         </div>
 	
-	<div class="col-lg-4 col-md-3">
+	<div class="col-lg-4 col-md-5">
         <?php get_sidebar('widgety'); ?>
         <?php get_sidebar();?>
+		<?php get_sidebar('footer');?>
         </div>
         
         </div>

@@ -21,6 +21,9 @@ defined("SCROLLUP_BG_COLOR") or define("SCROLLUP_BG_COLOR",'#ffffff');
 defined("SCROLLUP_ARROW_COLOR") or define("SCROLLUP_ARROW_COLOR",'#000000');
 defined("SCROLLUP_BG_OPACITY") or define("SCROLLUP_BG_OPACITY", 0.8); // Opacity on background color (not available in customizer)
 
+// Blog - featured image
+defined("FEATURED_IMG_STYLE") or define('FEATURED_IMG_STYLE', "width:350px;height:233px;border-style:solid;border-width:3px;border-color:black;");
+
 // Common parameters
 defined("STYLESHEET_DIR") or define("STYLESHEET_DIR",get_stylesheet_directory_uri());
 defined("TEMPLATE_DIR") or define("TEMPLATE_DIR",get_template_directory_uri());

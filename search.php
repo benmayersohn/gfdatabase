@@ -29,8 +29,9 @@
 	
 		</div>
 	
-        <div class="col-lg-4 col-md-3">
+        <div class="col-lg-4 col-md-5">
         <?php get_sidebar();?>
+		<?php get_sidebar('footer');?>
         </div>
 
     </div>
