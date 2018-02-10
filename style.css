@@ -48,11 +48,6 @@ a.page-numbers:hover {
 	background: #f9f9f9;
 }
 
-.wp-caption-text{
-	text-align:center;
-	font-size:12px;
-}
-
 .scroll-up-button{
     visibility:hidden;
     border-radius:5px;

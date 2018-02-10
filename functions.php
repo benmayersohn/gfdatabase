@@ -5,6 +5,17 @@ require_once('question-functions.php'); // question post type + hint/answer
 require_once('customizer.php'); // theme customization
 require_once('default_theme_vals.php');
 
+/*
+function myplugin_custom_walker( $args ) {
+    return array_merge( $args, array(
+		'container'         => 'div',
+		'container_class'   => 'navbar-inner navbar-collapse collapse',
+		'menu_class'        => 'nav nav-pills nav-justified',
+        'walker' => new WP_Bootstrap_Navwalker(),
+    ) );
+}
+add_filter( 'wp_nav_menu_args', 'myplugin_custom_walker' );
+*/
 
 add_action( 'widgets_init', 'configure_sidebars' );
 function configure_sidebars(){
@@ -22,6 +33,26 @@ function configure_sidebars(){
         'name' => 'Dynamic Top',
         'id' => 'widgety-top',
         'description' => 'Widgets in this area will be shown on post lists',
+        'before_widget' => '<div id="%1$s" class="widget %2$s unstyled">',
+	'after_widget'  => '</div>',
+	'before_title'  => '<h3 class="widgettitle">',
+	'after_title'   => '</h3>',
+    ) );
+	
+	register_sidebar( array(
+        'name' => 'Header',
+        'id' => 'header',
+        'description' => 'This widget goes in the header',
+        'before_widget' => '<div id="%1$s" class="widget %2$s unstyled">',
+	'after_widget'  => '</div>',
+	'before_title'  => '<h3 class="widgettitle">',
+	'after_title'   => '</h3>',
+    ) );
+	
+	register_sidebar( array(
+        'name' => 'Footer',
+        'id' => 'footer',
+        'description' => 'This widget goes in the footer',
         'before_widget' => '<div id="%1$s" class="widget %2$s unstyled">',
 	'after_widget'  => '</div>',
 	'before_title'  => '<h3 class="widgettitle">',

@@ -1,3 +1,6 @@
+
+<?php get_sidebar('footer');?>
+
 </div> <!-- end the "container" div -->
 
 <hr class="footer-hr">

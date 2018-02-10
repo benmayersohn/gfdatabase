@@ -118,7 +118,23 @@ color:<?php echo get_theme_mod('essentials_body_text_color',BODY_TEXT_COLOR);?>;
 							'walker'            => new WP_Bootstrap_Navwalker())
 						);
 			?>
+											
 		</section>
 		<hr class="non-mobile-separator">
+										
 		<div class="container">
+		<?php							   
+		if ( function_exists('yoast_breadcrumb') ) {
+			$options = get_option( 'wpseo_internallinks' );
+			if ( !($options['breadcrumbs-enable'] === false || is_front_page()) ) {
+				yoast_breadcrumb('
+				<p id="breadcrumbs">','</p>
+				');
+				echo "<hr class=\"breadcrumbs-hr\">";
+			}
+		}
+		?>
+							  
+		<?php get_sidebar('header');?>
+		
 	

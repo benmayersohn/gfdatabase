@@ -8,7 +8,7 @@
         
         <div <?php post_class(); ?> id="post-<?php the_ID(); ?>">
         <h2 class="text-center question-topic"><?php the_title(); ?></h2>
-        <img alt="" class="img-responsive" style="width:450px;height:250px;border-style:solid;border-width:3px;border-color:black;" src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full');?>">
+        <img alt="" class="img-responsive" style="width:400px;height:250px;border-style:solid;border-width:3px;border-color:black;" src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full');?>">
         <h5 class="post-meta">
         Posted by: <?php echo get_the_author();?> in <?php 
         $categories = get_the_category();

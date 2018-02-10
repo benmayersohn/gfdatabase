@@ -36,7 +36,6 @@ if ( have_posts() ) :
 	<?php get_sidebar('widgety-top'); ?>
 
 	<?php include('list-of-posts.php'); ?>
-        
         <?php endif;wp_reset_postdata();?>
         </div>
 

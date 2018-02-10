@@ -4,9 +4,9 @@
         <h2>
         <a href="<?php echo esc_url(get_the_permalink());?>"><?php echo get_the_title();?></a>
         </h2>
-    	<?php $img_src = get_the_post_thumbnail_url(get_the_ID(), 'full'); if ($img_src) : ?>
+    	<?php $img_src = get_the_post_thumbnail_url(get_the_ID(), array(400, 200)); if ($img_src) : ?>
         <a href="<?php echo esc_url(get_the_permalink());?>">
-        <img alt="" class="img-responsive" style="width:450px;height:250px;border-style:solid;border-width:3px;border-color:black;" src="<?php echo $img_src;?>">
+        <img alt="" class="img-responsive" style="width:400px;height:250px;border-style:solid;border-width:3px;border-color:black;" src="<?php echo $img_src;?>">
         </a>
 		<?php endif; ?>
 
@@ -22,8 +22,6 @@
         echo ' ' . human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago';
         ?>
         </h6>
-
-        <h5><?php echo get_post_field('post_excerpt', get_the_ID());?></h5>
 
         <?php
         // End the loop.
