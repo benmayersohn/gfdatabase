@@ -2,10 +2,9 @@
 <div class="page">
 <main id="main" class="site-main" role="main">
 	<?php get_sidebar('widgety-top'); ?>
-	<hr>
 <div class="row">
         <div class="col-lg-8 col-md-7 middle-panel-rise">
-        
+        <?php get_sidebar('widgety-top'); ?>
         <?php while ( have_posts() ) : the_post();?>
         
         <div <?php post_class(); ?> id="post-<?php the_ID(); ?>">
