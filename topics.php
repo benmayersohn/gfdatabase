@@ -15,7 +15,9 @@ $terms = get_terms(array(
 
 // Create a table, thumbnail
 ?>  
-
+<main id="main" class="site-main" role="main">
+<div class="row">
+        <div class="col-lg-8 col-md-7 middle-panel-rise">
     <h2 class="text-center"><?php echo get_the_title()?></h2><br>
       <div>
   <?php the_content();?>
@@ -39,5 +41,12 @@ $terms = get_terms(array(
     }?>
     </tbody>
   </table>
+</div>
 
+<div class="col-lg-4 col-md-5">
+  <?php get_sidebar('footer');?>
+</div>
+</div>
+
+</main>
 <?php get_footer(); ?>
