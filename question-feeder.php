@@ -69,7 +69,6 @@ get_header(); ?>
 	
 		</div>
 		<div class="col-lg-4 col-md-5">
-			<?php get_sidebar('widgety'); ?>
 			<?php get_sidebar('footer');?>
 		</div>
         
