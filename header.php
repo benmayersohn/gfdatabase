@@ -57,17 +57,19 @@
 	color: " . get_theme_mod('essentials_scrollup_color',SCROLLUP_ARROW_COLOR) . ";
 	}
 	";
-	$featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full');
+	$featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
 	if ( $featured_img_url && !(get_post_type(get_the_ID()) === 'post') ) {
 		echo ".pre-nav{
 		background-color: transparent;
 		background-image: url('" . $featured_img_url . "');}";
 	}
 	else{
+		$header_bg_id = get_theme_mod('essentials_body_header_bg_img');
+		$header_bg_url = wp_get_attachment_image_src($header_bg_id, 'large')[0];
 		if (get_theme_mod('essentials_body_header_bg_img') != ''){
 			echo ".pre-nav{
 			background-color: transparent;
-			background-image: url('" . get_theme_mod('essentials_body_header_bg_img') . "');}";
+			background-image: url('" . $header_bg_url . "');}";
 		}
 		elseif (get_theme_mod('essentials_body_header_bg_color') != ''){
 			echo ".pre-nav{
@@ -77,7 +79,15 @@
 	echo "</style>";
 	?>
     
-    <?php wp_head();?>
+    <?php wp_head();
+	
+	// Get header image attachment ID and set using thumbnail
+	$header_img = get_theme_mod('header_image_data');
+	$header_img = is_object($header_img) ? get_object_vars($header_img) : $header_img;
+	$header_img_id = $header_img['attachment_id'];
+	$header_img_url = wp_get_attachment_image_src($header_img_id, 'large')[0];
+	
+	?>
 </head>
 <body data-spy="scroll" style=
 "<?php echo "background-color: " . get_theme_mod('essentials_body_bg',BODY_BACKGROUND);?>;
@@ -89,7 +99,7 @@ color:<?php echo get_theme_mod('essentials_body_text_color',BODY_TEXT_COLOR);?>;
 		<section class="header">
 			<div class="pre-nav">
 			<a href="<?php echo get_site_url(); ?>">
-			<img id="title-img" class="img-responsive" alt="" src="<?php header_image(); ?>">
+			<img id="title-img" class="img-responsive" alt="" src="<?php echo $header_img_url; ?>">
 			</a>
 			<h1 class="main-subtitle" style="background-color:<?php echo get_theme_mod('essentials_subtitle_bg',SUBTITLE_BG_DEFAULT); ?>"><?php echo get_theme_mod('essentials_subtitle_text',SUBTITLE_TEXT_DEFAULT); ?></h1>
 			</div>

@@ -5,6 +5,34 @@ require_once('question-functions.php'); // question post type + hint/answer
 require_once('customizer.php'); // theme customization
 require_once('default_theme_vals.php');
 
+add_filter( 'img_caption_shortcode', 'dap_responsive_img_caption_filter', 10, 3 ); 
+function dap_responsive_img_caption_filter( $val, $attr, $content = null ) { 
+  extract(shortcode_atts( array( 
+    'id' => '', 
+    'align' => '', 
+    'width' => '', 
+    'caption' => '' 
+    ),  
+  $attr)); 
+   
+  if ( 1 > (int) $width || empty($caption) ) 
+    return $val; 
+  
+  if ( $id ) $id = 'id="' . esc_attr($id) . '" '; 
+  
+  return '<div ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="max-width: 100% !important; height: auto; width: ' . (10 + (int) $width) . 'px">' 
+  . do_shortcode( $content ) . '<p class="wp-caption-text">' . $caption . '</p></div>'; 
+}
+
+// turn off related posts in jetpack for everything other than blog posts
+function no_related_posts( $options ) {
+    if ( !is_singular( 'post' ) ) {
+        $options['enabled'] = false;
+    }
+    return $options;
+}
+add_filter( 'jetpack_relatedposts_filter_options', 'no_related_posts' );
+
 add_action( 'widgets_init', 'configure_sidebars' );
 function configure_sidebars(){
 	register_sidebar( array(

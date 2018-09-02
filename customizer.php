@@ -288,17 +288,19 @@ function my_customize_register() {
 	$wp_customize->add_setting( 'essentials_body_header_bg_img', array(
 		'type' => 'theme_mod',
 		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint',
 		'transport' => '',
 		) );
 
 	$wp_customize->add_control(
-		new WP_Customize_Image_Control(
+		new WP_Customize_Media_Control(
 			$wp_customize,
 			'header_bg_img',
 			array(
 				'label'      => __( 'Header Background Image (will override color)'),
 				'section'    => 'essentials_header',
 				'settings'   => 'essentials_body_header_bg_img',
+				'mime_type'  => 'image',
 			)
 		)
 	);
